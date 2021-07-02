@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CardList from '../CardList/CardList';
 import BadgeList from '../BadgeList/BadgeList';
+import MetaMaskConnect from '../MetaMaskConnect/MetaMaskConnect';
 import Logo from '../../static/logo.png';
 import './Home.css';
 
@@ -23,6 +24,7 @@ function Home({ page }: { page: string }) {
         </div>
         <aside>
           <Link to="/badges">My Badges</Link>
+          <MetaMaskConnect />
         </aside>
       </header>
 
