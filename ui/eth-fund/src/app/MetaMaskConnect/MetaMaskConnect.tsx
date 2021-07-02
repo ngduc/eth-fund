@@ -171,9 +171,7 @@ function MyComponent() {
     <div className="ml-2 mt-4">
       <div>
         <div className="flex flex-row justify-between">
-          <a className="w-100" href="/">
-            <img src="logo-text.png" alt="Logo" style={{ height: 64 }} />
-          </a>
+
 
           <div className="flex flex-row">
             <div className="mt-2">
@@ -183,7 +181,7 @@ function MyComponent() {
                   ? ' N/A'
                   : account === null
                   ? 'None'
-                  : `${account.substring(0, 6)}...${account.substring(account.length - 4)}`}
+                  : ` ${account.substring(0, 6)}...${account.substring(account.length - 4)}`}
               </span>
             </div>
             <div className="ml-4 mt-2">
@@ -192,8 +190,8 @@ function MyComponent() {
                 {ethBalance === undefined
                   ? ' N/A'
                   : ethBalance === null
-                  ? 'Error'
-                  : `Ξ ${parseFloat(formatEther(ethBalance)).toPrecision(4)}`}
+                  ? ' N/A'
+                  : ` Ξ ${parseFloat(formatEther(ethBalance)).toPrecision(4)}`}
               </span>
             </div>
 
@@ -204,7 +202,7 @@ function MyComponent() {
                     deactivate();
                   }}
                 >
-                  Disconnect MetaMask
+                  Disconnect
                 </button>
               ) : (
                 <button
@@ -214,10 +212,10 @@ function MyComponent() {
                     activate(connector);
                   }}
                 >
-                  Connect MetaMask
+                  Connect
                 </button>
               )}
-              <span className="ml-2 mr-2">{active ? '🟢' : error ? '🔴' : '🟠'}</span>
+              <span className="ml-2 mr-2">{' '}{active ? '🟢' : error ? '🔴' : '🟠'}</span>
             </div>
           </div>
         </div>

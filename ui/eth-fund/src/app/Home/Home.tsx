@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import CardList from '../CardList/CardList';
+import CardDetail from '../CardDetail/CardDetail';
 import BadgeList from '../BadgeList/BadgeList';
 import MetaMaskConnect from '../MetaMaskConnect/MetaMaskConnect';
 import Logo from '../../static/logo.png';
 import './Home.css';
 
-function Home({ page }: { page: string }) {
+function Home({ page, ...otherProps }: { page: string }) {
   const [menuVisible, setMenuVisible] = React.useState(true);
   return (
     <>
       <header className="headerBar">
         <aside>
           <Link to="/">
-            <img src={Logo} style={{ margin: 10, width: 100 }} />
+            <img src={Logo} style={{ margin: 10, height: 30 }} />
           </Link>
         </aside>
         <div>
@@ -39,7 +40,11 @@ function Home({ page }: { page: string }) {
             [ ☰ ]
           </span>
         </aside>
-        <main>{page === 'badges' ? <BadgeList /> : <CardList />}</main>
+        <main>
+          {page === 'badges' ? <BadgeList /> : null}
+          {page === 'list' ? <CardList /> : null}
+          {page === 'detail' ? <CardDetail /> : null}
+        </main>
       </section>
 
       <p>&nbsp;</p>

@@ -10,8 +10,11 @@ function App() {
         <Route path="/badges">
           <Home page="badges" />
         </Route>
+        <Route path="/detail">
+          <Home page="detail" />
+        </Route>
         <Route path="/">
-          <Home page="fundraisers" />
+          <Home page="list" />
         </Route>
       </Switch>
     </Router>
