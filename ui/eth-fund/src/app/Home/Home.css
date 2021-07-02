@@ -1,0 +1,53 @@
+div,
+aside,
+li,
+section,
+main {
+  /* border: 1px solid #ddd; */
+}
+main {
+  width: 100%;
+}
+
+/* ------ headerBar ------ */
+.headerBar {
+  display: flex;
+  align-items: center;
+}
+.headerBar div {
+  width: 100%;
+  text-align: center;
+}
+
+/* ------ sideBySide ------ */
+.sideBySide {
+  display: flex;
+  min-height: calc(100vh - 140px);
+}
+.sideBySide aside {
+  width: 300px;
+  transition: width ease 0.3s;
+  overflow: hidden;
+  background-color: #eff;
+  cursor: pointer;
+}
+.sideBySide aside.show-false {
+  width: 60px !important;
+}
+
+/* ------ gallery ------ */
+.gallery {
+  /* width: 80%;
+  margin: 0 auto; */
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gallery li {
+  list-style: none;
+  width: 200px;
+  height: 120px;
+  margin: 0 10px 10px 0;
+}
