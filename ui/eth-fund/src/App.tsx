@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './app/Home/Home';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Home />
-    </>
+    <Router>
+      <Switch>
+        <Route path="/badges">
+          <Home page="badges" />
+        </Route>
+        <Route path="/">
+          <Home page="fundraisers" />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
