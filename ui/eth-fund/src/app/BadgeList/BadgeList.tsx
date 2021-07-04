@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import './BadgeList.css';
 
 export default () => {
@@ -48,34 +49,34 @@ export default () => {
     }
   ];
   return (
-    <section className="cardListContainer">
-      <Link to="/">❮ Back to Fundraisers</Link>
+    <AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+        <section className="cardListContainer">
+          <Link to="/">❮ Back to Fundraisers</Link>
 
-      <ul className="cardList">
-        {data.map((item) => {
-          return (
-            <li className="card">
-              <div
-                className="cardImage"
-                style={{
-                  background: `url(${item.imageUrl}) center no-repeat`,
-                  backgroundSize: '50%'
-                }}
-              />
-              <div className="cardBody">
-                <div>{item.title}</div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+          <ul className="cardList">
+            {data.map((item) => {
+              return (
+                <li className="card">
+                  <div
+                    className="cardImage"
+                    style={{
+                      background: `url(${item.imageUrl}) center no-repeat`,
+                      backgroundSize: '50%'
+                    }}
+                  />
+                  <div className="cardBody">
+                    <div>{item.title}</div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
 
-      <h1 style={{ textAlign: 'center', fontSize: 24, marginTop: 30 }}>
-        Unblock More Badges:
-      </h1>
-      <div>
-        Badge List to unlock.
-      </div>
-    </section>
+          <h1 style={{ textAlign: 'center', fontSize: 24, marginTop: 30 }}>Unblock More Badges:</h1>
+          <div>Badge List to unlock.</div>
+        </section>
+      </motion.div>
+    </AnimatePresence>
   );
 };

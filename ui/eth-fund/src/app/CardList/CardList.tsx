@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import './CardList.css';
 
 const ProgressBar = ({ value, total }: any) => {
@@ -52,24 +53,28 @@ const data = [
 export default () => {
   const history = useHistory();
   return (
-    <section className="cardListContainer">
-      <ul className="cardList">
-        {data.map((item) => {
-          return (
-            <li className="card" onClick={() => history.push('/detail')}>
-              <div className="cardImage" style={{ background: `url(${item.imageUrl}) center` }} />
-              <div className="cardBody">
-                <div>{item.title}</div>
+    <AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+        <section className="cardListContainer">
+          <ul className="cardList">
+            {data.map((item) => {
+              return (
+                <li className="card" onClick={() => history.push('/detail')}>
+                  <div className="cardImage" style={{ background: `url(${item.imageUrl}) center` }} />
+                  <div className="cardBody">
+                    <div>{item.title}</div>
 
-                <div>
-                  ${item.raised} raised of ${item.goal}
-                </div>
-                <ProgressBar value={item.raised} total={item.goal} />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+                    <div>
+                      ${item.raised} raised of ${item.goal}
+                    </div>
+                    <ProgressBar value={item.raised} total={item.goal} />
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </motion.div>
+    </AnimatePresence>
   );
 };

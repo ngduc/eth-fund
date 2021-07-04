@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { Button } from '../../components/base';
 import CardList from '../CardList/CardList';
 import CardDetail from '../CardDetail/CardDetail';
@@ -24,7 +25,9 @@ function Home({ page, ...otherProps }: { page: string }) {
           </h1>
         </div>
         <aside>
-          <Link to="/badges"><Button style={{ width: 120 }}>My Badges</Button></Link>
+          <Link to="/badges">
+            <Button style={{ width: 120 }}>My Badges</Button>
+          </Link>
           <MetaMaskConnect />
         </aside>
       </header>
