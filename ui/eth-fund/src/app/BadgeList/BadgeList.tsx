@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './BadgeList.css';
 
 export default () => {
@@ -48,6 +49,8 @@ export default () => {
   ];
   return (
     <section className="cardListContainer">
+      <Link to="/">❮ Back to Fundraisers</Link>
+
       <ul className="cardList">
         {data.map((item) => {
           return (
@@ -66,6 +69,13 @@ export default () => {
           );
         })}
       </ul>
+
+      <h1 style={{ textAlign: 'center', fontSize: 24, marginTop: 30 }}>
+        Unblock More Badges:
+      </h1>
+      <div>
+        Badge List to unlock.
+      </div>
     </section>
   );
 };

@@ -5,3 +5,14 @@
   margin-top: 20px;
   padding: 5px;
 }
+
+.phases {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.phases li {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+}

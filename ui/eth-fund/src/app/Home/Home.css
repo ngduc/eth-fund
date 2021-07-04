@@ -26,6 +26,8 @@ a {
 .headerBar aside {
   width: 400px;
   display: flex;
+  margin-right: 10px;
+  align-items: center;
 }
 
 /* ------ sideBySide ------ */
