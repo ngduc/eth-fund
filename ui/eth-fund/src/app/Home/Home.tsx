@@ -46,12 +46,12 @@ function Home({ page, ...otherProps }: { page: string }) {
             </span>
           </div>
           {page === 'detail' ? (
-            <ul className="p-4">
-              <li>Overview</li>
-              <li>Organizers</li>
-              <li>Goals</li>
-              <li>Contributors</li>
-              <li>Comments</li>
+            <ul className="mt-2">
+              <li className="hover:bg-gray-100 rounded-md p-2">Overview</li>
+              <li className="hover:bg-gray-100 rounded-md p-2">Organizers</li>
+              <li className="hover:bg-gray-100 rounded-md p-2">Goals</li>
+              <li className="hover:bg-gray-100 rounded-md p-2">Contributors</li>
+              <li className="hover:bg-gray-100 rounded-md p-2">Comments</li>
             </ul>
           ) : null}
         </aside>

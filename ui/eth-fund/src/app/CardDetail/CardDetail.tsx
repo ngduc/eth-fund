@@ -18,7 +18,7 @@ export default () => {
         <section className="detail-container">
           <Link to="/">❮ Back to Fundraisers</Link>
           <main>
-            <h3 className="font-bold my-4">VR Project</h3>
+            <h3 className="font-bold my-4">{fundList[0].title}</h3>
 
             <div>{fundList[0].description}</div>
             <div>&nbsp;</div>
