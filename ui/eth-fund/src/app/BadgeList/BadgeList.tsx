@@ -28,7 +28,9 @@ export default () => {
       title: '4th Donor - Copper',
       raised: 400,
       goal: 500
-    },
+    }
+  ];
+  const otherBadges = [
     {
       imageUrl: 'https://i.ibb.co/kGpmK91/eth-1.png',
       title: '1 Eth Club',
@@ -62,7 +64,7 @@ export default () => {
                     className="cardImage"
                     style={{
                       background: `url(${item.imageUrl}) center no-repeat`,
-                      backgroundSize: '50%'
+                      backgroundSize: '40%'
                     }}
                   />
                   <div className="cardBody">
@@ -73,8 +75,26 @@ export default () => {
             })}
           </ul>
 
-          <h1 style={{ textAlign: 'center', fontSize: 24, marginTop: 30 }}>Unblock More Badges:</h1>
-          <div>Badge List to unlock.</div>
+          <h1 style={{ fontSize: 24 }}>Unblock More Badges:</h1>
+          
+          <ul className="cardList">
+            {otherBadges.map((item) => {
+              return (
+                <li className="card">
+                  <div
+                    className="cardImage"
+                    style={{
+                      background: `url(${item.imageUrl}) center no-repeat`,
+                      backgroundSize: '25%'
+                    }}
+                  />
+                  <div className="cardBody">
+                    <div>{item.title}</div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </section>
       </motion.div>
     </AnimatePresence>

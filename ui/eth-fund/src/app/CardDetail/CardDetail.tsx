@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Field } from '../../components/base';
+import { fundList } from '../CardList/CardList';
 import './CardDetail.css';
 
 export default () => {
@@ -17,23 +18,30 @@ export default () => {
         <section className="detail-container">
           <Link to="/">❮ Back to Fundraisers</Link>
           <main>
-            <h3>VR Project</h3>
-            <div>Description</div>
-            <div>&nbsp;</div>
+            <h3 className="font-bold my-4">VR Project</h3>
 
+            <div>{fundList[0].description}</div>
+            <div>&nbsp;</div>
+            <div>Organizer - Duc Nguyen</div>
+
+            <h3 className="font-bold my-4">Phases</h3>
             <ul className="phases">
               <li>
-                <input type="radio" name="selectedPhase" defaultChecked /> Phase 1
+                <label>
+                  <input type="radio" name="selectedPhase" defaultChecked /> Phase 1 - Foundation
+                </label>
               </li>
               <li>
-                <input type="radio" name="selectedPhase" /> Phase 2
+                <label>
+                  <input type="radio" name="selectedPhase" /> Phase 2 - Structure
+                </label>
               </li>
               <li>
-                <input type="radio" name="selectedPhase" /> Phase 3
+                <label>
+                  <input type="radio" name="selectedPhase" /> Phase 3 - Complete
+                </label>
               </li>
             </ul>
-
-            <div>&nbsp;</div>
             <Button onClick={() => setFundVisible(!fundVisible)}>Fund This Campaign</Button>
 
             {fundVisible && (
@@ -48,7 +56,7 @@ export default () => {
                     <input type="radio" name="time" value="PERIOD" checked /> Over a period of time
                   </label>
                 </Field>
-                <Field label="Total time (months)" defaultValue="12" autoFocus={true} />
+                <Field label="Total time (months)" defaultValue="12" />
                 <div className="mt-4">
                   <Button primary type="submit">
                     Submit

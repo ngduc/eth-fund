@@ -34,15 +34,26 @@ function Home({ page, ...otherProps }: { page: string }) {
 
       <section className="sideBySide">
         <aside className={`show-${menuVisible}`}>
-          <span
-            onClick={() => {
-              console.log('menuVisible', menuVisible);
-              setMenuVisible(!menuVisible);
-            }}
-            style={{ margin: 10 }}
-          >
-            [ ☰ ]
-          </span>
+          <div>
+            <span
+              onClick={() => {
+                console.log('menuVisible', menuVisible);
+                setMenuVisible(!menuVisible);
+              }}
+              style={{ margin: 10 }}
+            >
+              [ ☰ ]
+            </span>
+          </div>
+          {page === 'detail' ? (
+            <ul className="p-4">
+              <li>Overview</li>
+              <li>Organizers</li>
+              <li>Goals</li>
+              <li>Contributors</li>
+              <li>Comments</li>
+            </ul>
+          ) : null}
         </aside>
         <main>
           {page === 'badges' ? <BadgeList /> : null}
