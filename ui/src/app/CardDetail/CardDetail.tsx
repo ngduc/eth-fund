@@ -130,7 +130,7 @@ export default () => {
             <Button primary onClick={() => setFundVisible(!fundVisible)}>
               Fund This Campaign
             </Button>
-            <Button className="ml-4" onClick={() => setFundVisible(!fundVisible)}>
+            <Button className="ml-4" onClick={() => setFundVisible(false)}>
               Cancel Last Contribution
             </Button>
 

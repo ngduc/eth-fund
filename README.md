@@ -5,10 +5,11 @@ A site that lists campaigns or missions for fundraising, accepts any crypto toke
 
 - React
 - Typescript
+- Web3
 - Metamask
 
 ### Backend
 
 - Truffle
-- Superfluid
 - Infura
+- Superfluid
