@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Field } from '../../components/base';
+import { Button, Field, Modal } from '../../components/base';
 import { fundList } from '../CardList/CardList';
 import './CardDetail.css';
 
 export default () => {
   const [fundVisible, setFundVisible] = React.useState(false);
+  const [modalShowed, setModalShowed] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+
   return (
     <AnimatePresence>
       <motion.div
@@ -33,8 +36,9 @@ export default () => {
               </li>
               <li>
                 <label>
-                  <input type="radio" name="selectedPhase" /> Phase 2 - Structure
+                  <input type="radio" name="selectedPhase" /> Phase 2 - Structure 
                 </label>
+                <div className="mt-2 text-blue-300">Your contribution status: Delivered 06/01/2021 - Complete, On-time. <a className="font-bold" href="javascript:;">More Details.</a></div>
               </li>
               <li>
                 <label>
@@ -42,10 +46,15 @@ export default () => {
                 </label>
               </li>
             </ul>
-            <Button onClick={() => setFundVisible(!fundVisible)}>Fund This Campaign</Button>
+            <Button primary onClick={() => setFundVisible(!fundVisible)}>
+              Fund This Campaign
+            </Button>
+            <Button className="ml-4" onClick={() => setFundVisible(!fundVisible)}>
+              Cancel Last Contribution
+            </Button>
 
             {fundVisible && (
-              <form className="lg:w-1/2 sm:w-full p-4 border bg-gray-100">
+              <form onSubmit={() => {}} className="lg:w-1/2 sm:w-full p-4 border bg-gray-100">
                 <Field label="Token" defaultValue="ETH" />
                 <Field label="Amount" defaultValue="" autoFocus={true} />
                 <Field label="Funding Method" className="my-2" fieldClassName="inline space-x-4 ml-4">
@@ -58,7 +67,7 @@ export default () => {
                 </Field>
                 <Field label="Total time (months)" defaultValue="12" />
                 <div className="mt-4">
-                  <Button primary type="submit">
+                  <Button primary type="button" onClick={() => setModalShowed(true)}>
                     Submit
                   </Button>
                   <Button className="ml-2" type="reset">
@@ -69,6 +78,48 @@ export default () => {
             )}
           </main>
         </section>
+
+        {modalShowed === true ? (
+          <Modal
+            title="Confirm Transfer"
+            content={
+              <div>
+                {submitted ? (
+                  <div>
+                    <p>Transfer complete!</p>
+                    <p>&nbsp;</p>
+                    <p>
+                      Thank you for supporting our campaign!
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>
+                      Please come back and check the status of your contribution once it's updated.
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <p>Your fund will be transferred using Metamask.</p>
+                    <p>&nbsp;</p>
+                    <p>
+                      At this time, please pay with Rinkeby Test Net as this is not tested or ready with the Main Net.
+                    </p>
+                  </div>
+                )}
+              </div>
+            }
+            onCancel={() => setModalShowed(false)}
+            onConfirm={() => {
+              if (submitted) {
+                setModalShowed(false);
+                setSubmitted(false);
+              } else {
+                setTimeout(() => {
+                  setSubmitted(true);
+                }, 2000)
+              }
+            }}
+          />
+        ) : null}
       </motion.div>
     </AnimatePresence>
   );
