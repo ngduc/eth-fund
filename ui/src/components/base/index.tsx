@@ -191,6 +191,7 @@ export const Toast = ({ className, success, error, title, content, icon, onDismi
   const timerRef = React.useRef(0);
   React.useEffect(() => {
     if ((autoDismiss || 0) > 0) {
+      // @ts-ignore
       timerRef.current = setTimeout(() => (onDismiss ? onDismiss() : ''), autoDismiss);
     }
     return () => clearTimeout(timerRef.current);

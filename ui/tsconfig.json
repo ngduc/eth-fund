@@ -6,9 +6,10 @@
       "DOM.Iterable",
       "ESNext"
     ],
+    "typeRoots": ["./types"],
     "allowJs": false,
-    "skipLibCheck": false,
-    "esModuleInterop": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,

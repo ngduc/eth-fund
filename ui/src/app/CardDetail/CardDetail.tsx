@@ -1,14 +1,95 @@
 import React from 'react';
+import { Web3ReactProvider, useWeb3React, UnsupportedChainIdError } from '@web3-react/core';
+
+// @ts-ignore
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Field, Modal } from '../../components/base';
 import { fundList } from '../CardList/CardList';
 import './CardDetail.css';
 
+// @ts-ignore
+// import SuperfluidSDK from '@superfluid-finance/js-sdk'; 
+// import { Web3Provider } from '@ethersproject/providers';
+// import { toWei } from 'web3-utils'
+// const {
+//   toWad,
+//   toBN,
+//   fromWad,
+//   wad4human
+// } = require("@decentral.ee/web3-helpers");
+
+// const testFlow = async () => {
+//   const walletAddress = await (window as any).ethereum.request({
+//     method: 'eth_requestAccounts',
+//     params: [
+//       {
+//         eth_accounts: {}
+//       }
+//     ]
+//   });
+//   const sf = new SuperfluidSDK.Framework({
+//     ethers: new Web3Provider((window as any).ethereum),
+//     tokens: ['fDAI']
+//   });
+//   await sf.initialize();
+  
+//   const bob = sf.user({ address: '0x8770479B8d27fb0347E6B44871c06f96a3C9e402', token: sf.tokens.fDAI.address });
+  
+//   // const dai = await TestToken.at(sf.tokens.fDAI.address);
+//   const fDAI = await sf.contracts.TestToken.at(
+//     sf.tokens.fDAI.address
+//   );
+//   const daix = sf.tokens.fDAI;
+//   console.log('fDAI', fDAI.mint)
+
+//   console.log('mint---')
+//   // await fDAI.mint(bob, toWad(100), { from: bob })
+//   await fDAI.mint(sf.tokens.fDAI.address, 1)
+
+//   console.log('mint---done')
+//   // (async () => (wad4human(await fDAI.balanceOf(bob))))()
+
+//   // const carol = sf.user({
+//   //   address: walletAddress[0],
+//   //   token: '0x8770479B8d27fb0347E6B44871c06f96a3C9e402'
+//   // });
+
+//   // await carol.flow({
+//   //   recipient: '0x9c0749510c4c45674e6d7b5c628a1f16be56eeed',
+//   //   flowRate: 385802469135802
+//   // });
+  
+//   // const details = await carol.details();
+//   // console.log(details);
+// };
+// testFlow();
+
 export default () => {
   const [fundVisible, setFundVisible] = React.useState(false);
   const [modalShowed, setModalShowed] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
+
+  const context = useWeb3React();
+  const { connector, library, chainId, account, activate, deactivate, active, error } = context;
+
+  const onPayClick = () => {
+    if (library && library.send) {
+      library
+        .send('eth_sendTransaction', [
+          {
+            from: account,
+            to: 'SERVICE_ETH_ADDRESS',
+            value: '0x00', // utils.toWei('0.00001', 'ether'),
+            gasPrice: '0x0000001F6EA08600',
+            gas: '0x0001ADB0'
+          }
+        ])
+        // .then((tid) => {
+        //   setTransactionId(tid);
+        // });
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -112,6 +193,7 @@ export default () => {
               if (submitted) {
                 setModalShowed(false);
                 setSubmitted(false);
+                onPayClick();
               } else {
                 setTimeout(() => {
                   setSubmitted(true);
